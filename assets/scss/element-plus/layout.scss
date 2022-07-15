@@ -1,0 +1,18 @@
+.el-container {
+	.el-main {
+		width: 100%;
+		height: auto;
+		overflow: inherit;
+		--el-main-padding: 0;
+
+		@media #{$xs-only} {
+			overflow: hidden;
+		}
+	}
+  
+	.el-header,
+	.el-footer {
+		height: auto;
+		padding: 0;
+	}
+}
