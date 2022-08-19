@@ -1,21 +1,8 @@
 <template>
-  <LayProvider>
-    <NuxtLayout name="default">
-      <NuxtPage />
-    </NuxtLayout>
-  </LayProvider>
+  <div>
+    <el-button>Hello world!</el-button>
+  </div>
 </template>
 
 <script setup>
-const { globalStore } = useStore()
-
-onBeforeMount(() => {
-	globalStore.screenWidth = document.body.clientWidth
-})
-
-onMounted(() => {
-	window.onresize = () => {
-		globalStore.screenWidth = document.body.clientWidth
-	}
-})
 </script>

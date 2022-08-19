@@ -1,18 +1,20 @@
 import { defineNuxtConfig } from 'nuxt'
-// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
+
+// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-	css: ['@/assets/scss/index.scss'],
-	build: {
-		transpile: ['vueuc'] // fix dev error: Cannot find module 'vueuc'
+  axios: {
+		//baseUrl: 'https://localhost:5001',
+		proxy: true
 	},
-	vite: {
-		css: {
-			preprocessorOptions: {
-				scss: {
-					additionalData: `@import "@/assets/scss/variable.scss";`
-				}
-			}
+	proxy: {
+		'/api': {
+			changeOrigin: true,
+			target: 'https://cafepresswebapi-stage.cafepress.com',
+			pathRewrite: {
+				'^/api': '/api'
+			},
+			secure: false
 		}
 	},
-	buildModules: ['@pinia/nuxt']
+	modules: ['@nuxtjs-alt/axios', '@nuxtjs-alt/proxy']
 })
